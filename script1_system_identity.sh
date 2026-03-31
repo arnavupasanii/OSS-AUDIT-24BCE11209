@@ -1,8 +1,22 @@
-
-echo " System Identity Report :"
-echo "Hostname: $(hostname)"			
-echo "Current User: $(whoami)"                         
-echo "Operating System: $(uname -o)"		
-echo "Kernel Version: $(uname -r)"                    
-echo "System Uptime:"
-uptime				                
+#!/bin/bash 
+# Script 1: System Identity Report 
+# Author: Arnav Upasani
+ 
+ 
+STUDENT_NAME="Arnav Upasani"
+SOFTWARE_CHOICE="Git"	 
+ 
+ 
+ 
+echo "================================"
+echo " Open Source Audit — $STUDENT_NAME"	 
+echo "================================"
+echo "Software Chosen : $SOFTWARE_CHOICE"	 
+echo "Kernel          : $KERNEL"	 	
+echo "User            : $USER_NAME"	 	
+echo "Distro          : $DISTRO"	 		
+echo "Uptime          : $UPTIME"	 
+ 		
+echo "Date & Time     : $DATE"			
+echo "License         : Linux is mostly under GPL License"	 
+echo "================================"
