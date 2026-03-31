@@ -1,8 +1,23 @@
-echo "Log File Analyzer :"  		   
-LOGFILE="/var/log/syslog"		       
-if [ -f "$LOGFILE" ]; then     	        
-    echo "Showing last 10 lines of log file:"   
-    tail -n 10 $LOGFILE			        
-else
-    echo "Log file not found!"		
-fi						            
+#!/bin/bash
+# Script 4: Log File Analyzer
+
+LOGFILE=$1
+KEYWORD=${2:-"error"}
+COUNT=0
+
+if [ ! -f "$LOGFILE" ]; then
+    echo "Error: File not found!"
+    exit 1
+fi
+
+while IFS= read -r LINE
+do
+    if echo "$LINE" | grep -iq "$KEYWORD"; then
+        COUNT=$((COUNT + 1))
+    fi
+done < "$LOGFILE"
+
+echo "Keyword '$KEYWORD' found $COUNT times in $LOGFILE"
+
+echo "Last 5 matches:"
+grep -i "$KEYWORD" "$LOGFILE" | tail -5
